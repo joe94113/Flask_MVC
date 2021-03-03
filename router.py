@@ -6,10 +6,25 @@ from app.views.user import Views
 def index():
     return Views.index()
 
+
 @app.route("/new", methods=["GET"])
 def new():
     return Views.new()
 
-@app.route("/create", methods=["POST"])
+
+@app.route("/create", methods=["POST"])  # 新增資料
 def create():
     return Views.create()
+
+
+@app.route("/<int:id>/edit", methods=["GET"])  # 修改資料
+def edit(id):
+    return Views.edit(id)
+
+
+@app.route("/<int:id>")  # 更新資廖
+def update(id):
+    Views.update(id)
+    return "User update successful"
+
+

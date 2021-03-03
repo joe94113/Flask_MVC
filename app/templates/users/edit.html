@@ -1,0 +1,18 @@
+{% extends "users/layout.html" %}
+{% block body %}
+使用者名稱
+<p>{{ user.username }}</p>
+<!--Update user info-->
+<from action="/1" method="POST">
+    <label for="email">email</label>
+    <input type="text" name="email" value=""><br>
+    <input type="submit" value="提交"><br>
+</from>
+
+<!--Delete user info-->
+<from action="/1/delete" method="POST">
+    <label for="email">Delete user</label>
+    <input type="hidden" name="email" value=""><br>
+    <input type="submit" value="click me to delete">
+</from>
+{% endblock %}
