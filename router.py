@@ -22,7 +22,7 @@ def edit(id):
     return Views.edit(id)
 
 
-@app.route("/<int:id>")  # 更新資廖
+@app.route("/<int:id>", methods=["POST"])  # 更新資廖
 def update(id):
     Views.update(id)
     return "User update successful"
