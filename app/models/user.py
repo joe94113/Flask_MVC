@@ -2,7 +2,7 @@ from .. import db
 
 
 class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True, autoincrement="auto")
+    id = db.Column(db.Integer, primary_key=True, autoincrement="auto", default=1)  # 遇到問題id不會自動遞增
     username = db.Column(db.String(80), unique=True)
     email = db.Column(db.String(120), unique=True)
 
