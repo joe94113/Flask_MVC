@@ -21,3 +21,10 @@ def _update(id, email):
     user.email = email  # 更新email
     db.session.commit()  # 變更資料庫資料
     return
+
+
+def _destroy(id):
+    user = User.query.filter_by(id=id).first()
+    db.session.delete(user)  # 刪除資料
+    db.session.commit()
+    return

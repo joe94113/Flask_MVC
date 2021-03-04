@@ -17,6 +17,11 @@ def create():
     return Views.create()
 
 
+@app.route('/<int:id>', methods=["GET"])
+def show(id):
+    return Views.show(id)
+
+
 @app.route("/<int:id>/edit", methods=["GET"])  # 修改資料
 def edit(id):
     return Views.edit(id)
@@ -28,3 +33,7 @@ def update(id):
     return "User update successful"
 
 
+@app.route("/<int:id>/delete", methods=["POST"])
+def destroy(id):
+    Views.destroy(id)
+    return "User deleted"

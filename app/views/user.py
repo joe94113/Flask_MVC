@@ -1,6 +1,6 @@
 from flask import render_template
 from flask import request
-from app.models.user import User, _create, _update
+from app.models.user import User, _create, _update, _destroy
 
 
 class Views:
@@ -18,6 +18,10 @@ class Views:
         # call models
         return "User creation successful"
 
+    def show(id):
+        user = User.query.filter_by(id=id).first()
+        return render_template("users/show.html", user=user)
+
     def edit(id):
         user = User.query.filter_by(id=id).first()
         return render_template("users/edit.html", user=user)
@@ -25,4 +29,8 @@ class Views:
     def update(id):
         email = request.form["email"]
         _update(id, email)
+        return
+
+    def destroy(id):
+        _destroy(id)
         return
