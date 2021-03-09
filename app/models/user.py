@@ -1,3 +1,5 @@
+from sqlalchemy import desc
+
 from .. import db
 
 
@@ -10,7 +12,12 @@ class User(db.Model):
 
 
 def _create(username, email):
-    user = User(username=username, email=email)
+    if User.query.order_by(desc('id')).first():
+        oldUser = User.query.order_by(desc('id')).first()
+        user = User(id=oldUser.id + 1, username=username, email=email)
+    else:
+        user = User(id=1, username=username, email=email)
+
     db.session.add(user)
     db.session.commit()
     return
